@@ -1,0 +1,74 @@
+[2023-10-01T15:51:32.192+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T15:51:32.291+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T15:51:32.291+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T15:51:35.201+0000] {taskinstance.py:1327} INFO - Executing <Task(GCSToBigQueryOperator): load_gcs_to_bigquery> on 2019-02-02 06:00:00+00:00
+[2023-10-01T15:51:35.213+0000] {standard_task_runner.py:57} INFO - Started process 701 to run task
+[2023-10-01T15:51:35.217+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'load_gcs_to_bigquery', 'scheduled__2019-02-02T06:00:00+00:00', '--job-id', '571', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmp8kysacdi']
+[2023-10-01T15:51:35.222+0000] {standard_task_runner.py:85} INFO - Job 571: Subtask load_gcs_to_bigquery
+[2023-10-01T15:51:35.831+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T15:51:39.782+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='load_gcs_to_bigquery' AIRFLOW_CTX_EXECUTION_DATE='2019-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-02-02T06:00:00+00:00'
+[2023-10-01T15:51:39.783+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T15:51:39.784+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T15:51:39.785+0000] {gcs_to_bigquery.py:373} INFO - Using existing BigQuery table for storing data...
+[2023-10-01T15:51:39.827+0000] {bigquery.py:2326} INFO - Project is not included in destination_project_dataset_table: alt_data.green_alt_data_table; using project "nature-26092023"
+[2023-10-01T15:51:39.827+0000] {gcs_to_bigquery.py:377} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'nature-26092023', 'datasetId': 'alt_data', 'tableId': 'green_alt_data_table'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://practice18/green/green_tripdata_2019-02.csv.gz'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False, 'skipLeadingRows': None, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2023-10-01T15:51:39.828+0000] {bigquery.py:1592} INFO - Inserting job ***_Load_Green_Taxi_Data_Web_To_GCS_To_BQ_load_gcs_to_bigquery_2019_02_02T06_00_00_00_00_cb3e41396790f31a569ff5f286e492e7
+[2023-10-01T15:51:44.643+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 436, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.NotFound: 404 Not found: URI gs://practice18/green/green_tripdata_2019-02.csv.gz
+[2023-10-01T15:51:44.658+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=load_gcs_to_bigquery, execution_date=20190202T060000, start_date=20231001T155132, end_date=20231001T155144
+[2023-10-01T15:51:46.822+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 571 for task load_gcs_to_bigquery (404 Not found: URI gs://practice18/green/green_tripdata_2019-02.csv.gz; 701)
+[2023-10-01T15:51:46.879+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-10-01T15:51:46.908+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-01T17:31:57.959+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T17:31:58.022+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T17:31:58.022+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T17:31:59.793+0000] {taskinstance.py:1327} INFO - Executing <Task(GCSToBigQueryOperator): load_gcs_to_bigquery> on 2019-02-02 06:00:00+00:00
+[2023-10-01T17:31:59.808+0000] {standard_task_runner.py:57} INFO - Started process 2312 to run task
+[2023-10-01T17:31:59.816+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'load_gcs_to_bigquery', 'scheduled__2019-02-02T06:00:00+00:00', '--job-id', '602', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmpd1f5yszo']
+[2023-10-01T17:31:59.819+0000] {standard_task_runner.py:85} INFO - Job 602: Subtask load_gcs_to_bigquery
+[2023-10-01T17:32:00.532+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T17:32:01.439+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='load_gcs_to_bigquery' AIRFLOW_CTX_EXECUTION_DATE='2019-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-02-02T06:00:00+00:00'
+[2023-10-01T17:32:01.441+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T17:32:01.576+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T17:32:01.577+0000] {gcs_to_bigquery.py:373} INFO - Using existing BigQuery table for storing data...
+[2023-10-01T17:32:01.663+0000] {bigquery.py:2326} INFO - Project is not included in destination_project_dataset_table: alt_data.green_alt_data_table; using project "nature-26092023"
+[2023-10-01T17:32:01.663+0000] {gcs_to_bigquery.py:377} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'nature-26092023', 'datasetId': 'alt_data', 'tableId': 'green_alt_data_table'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://practice18/green/green_tripdata_2019-02.csv'], 'writeDisposition': 'WRITE_TRUNCATE', 'ignoreUnknownValues': False, 'skipLeadingRows': None, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2023-10-01T17:32:01.664+0000] {bigquery.py:1592} INFO - Inserting job ***_Load_Green_Taxi_Data_Web_To_GCS_To_BQ_load_gcs_to_bigquery_2019_02_02T06_00_00_00_00_9dc79cf6c86aefd04788ed157bf2a995
+[2023-10-01T17:32:16.097+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=load_gcs_to_bigquery, execution_date=20190202T060000, start_date=20231001T173158, end_date=20231001T173216
+[2023-10-01T17:32:16.234+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-10-01T17:32:16.253+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-01T18:45:15.333+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T18:45:15.363+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T18:45:15.363+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T18:45:15.415+0000] {taskinstance.py:1327} INFO - Executing <Task(GCSToBigQueryOperator): load_gcs_to_bigquery> on 2019-02-02 06:00:00+00:00
+[2023-10-01T18:45:15.426+0000] {standard_task_runner.py:57} INFO - Started process 3492 to run task
+[2023-10-01T18:45:15.430+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'load_gcs_to_bigquery', 'scheduled__2019-02-02T06:00:00+00:00', '--job-id', '625', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmplyb_5s_1']
+[2023-10-01T18:45:15.432+0000] {standard_task_runner.py:85} INFO - Job 625: Subtask load_gcs_to_bigquery
+[2023-10-01T18:45:15.490+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.load_gcs_to_bigquery scheduled__2019-02-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T18:45:15.629+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='load_gcs_to_bigquery' AIRFLOW_CTX_EXECUTION_DATE='2019-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-02-02T06:00:00+00:00'
+[2023-10-01T18:45:15.630+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T18:45:15.630+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T18:45:15.631+0000] {gcs_to_bigquery.py:373} INFO - Using existing BigQuery table for storing data...
+[2023-10-01T18:45:15.673+0000] {bigquery.py:2326} INFO - Project is not included in destination_project_dataset_table: alt_data.green_alt_data_table; using project "nature-26092023"
+[2023-10-01T18:45:15.674+0000] {gcs_to_bigquery.py:377} INFO - Executing: {'load': {'autodetect': True, 'createDisposition': 'CREATE_IF_NEEDED', 'destinationTable': {'projectId': 'nature-26092023', 'datasetId': 'alt_data', 'tableId': 'green_alt_data_table'}, 'sourceFormat': 'CSV', 'sourceUris': ['gs://practice18/green/green_tripdata_2019-02.csv'], 'writeDisposition': 'WRITE_APPEND', 'ignoreUnknownValues': False, 'skipLeadingRows': None, 'fieldDelimiter': ',', 'quote': None, 'allowQuotedNewlines': False, 'encoding': 'UTF-8'}}
+[2023-10-01T18:45:15.675+0000] {bigquery.py:1592} INFO - Inserting job ***_Load_Green_Taxi_Data_Web_To_GCS_To_BQ_load_gcs_to_bigquery_2019_02_02T06_00_00_00_00_6a8dbfbb23294ce32283b383c1624adb
+[2023-10-01T18:45:18.028+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/transfers/gcs_to_bigquery.py", line 436, in execute
+    job.result(timeout=self.result_timeout, retry=self.result_retry)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/bigquery/job/base.py", line 922, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Provided Schema does not match Table nature-26092023:alt_data.green_alt_data_table. Field congestion_surcharge has changed type from STRING to FLOAT
+[2023-10-01T18:45:18.145+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=load_gcs_to_bigquery, execution_date=20190202T060000, start_date=20231001T184515, end_date=20231001T184518
+[2023-10-01T18:45:18.188+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 625 for task load_gcs_to_bigquery (400 Provided Schema does not match Table nature-26092023:alt_data.green_alt_data_table. Field congestion_surcharge has changed type from STRING to FLOAT; 3492)
+[2023-10-01T18:45:18.213+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-10-01T18:45:18.241+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

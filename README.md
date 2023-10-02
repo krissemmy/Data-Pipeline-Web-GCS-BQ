@@ -10,7 +10,7 @@ loads it into GCS Bucket and transfer the data from the GCS Bucket to a BigQuery
 • Built using the GCS Hook and GCS_To_BigQuery Operator
 
 • The data pipeline is built in a Docker container and executed with Celery executor so it gives room for scalability.
-
+![Alt text](image.png)
 ## Setup (official)
 
 ### Requirements

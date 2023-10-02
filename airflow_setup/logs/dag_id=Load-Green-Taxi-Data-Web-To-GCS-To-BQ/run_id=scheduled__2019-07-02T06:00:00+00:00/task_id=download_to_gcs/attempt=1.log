@@ -1,0 +1,175 @@
+[2023-10-01T17:17:06.965+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-07-02T06:00:00+00:00 [queued]>
+[2023-10-01T17:17:06.978+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-07-02T06:00:00+00:00 [queued]>
+[2023-10-01T17:17:06.978+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T17:17:07.264+0000] {taskinstance.py:1327} INFO - Executing <Task(WebToGCSHKOperator): download_to_gcs> on 2019-07-02 06:00:00+00:00
+[2023-10-01T17:17:07.291+0000] {standard_task_runner.py:57} INFO - Started process 2081 to run task
+[2023-10-01T17:17:07.295+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'download_to_gcs', 'scheduled__2019-07-02T06:00:00+00:00', '--job-id', '596', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmpu5wz5ljj']
+[2023-10-01T17:17:07.298+0000] {standard_task_runner.py:85} INFO - Job 596: Subtask download_to_gcs
+[2023-10-01T17:17:07.472+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-07-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T17:17:07.751+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='download_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2019-07-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-07-02T06:00:00+00:00'
+[2023-10-01T17:17:07.752+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T17:17:07.753+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T17:17:07.753+0000] {Web_To_GCS_Hook.py:67} INFO - Execute downloading of file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-07.csv.gz to gs://practice18//green_tripdata_2019-07.csv.gz
+[2023-10-01T17:17:07.759+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 175, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.7/socket.py", line 752, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 187, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7fef855098d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 497, in send
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-07.csv.gz (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fef855098d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 58, in execute
+    self._copy_file_object(gcs_hook)
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 75, in _copy_file_object
+    r = requests.get(request_url)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-07.csv.gz (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fef855098d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+[2023-10-01T17:17:07.770+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=download_to_gcs, execution_date=20190702T060000, start_date=20231001T171706, end_date=20231001T171707
+[2023-10-01T17:17:07.885+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 596 for task download_to_gcs (HTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-07.csv.gz (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fef855098d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')); 2081)
+[2023-10-01T17:17:07.907+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-10-01T17:17:07.947+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-01T17:59:24.211+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-07-02T06:00:00+00:00 [queued]>
+[2023-10-01T17:59:24.235+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-07-02T06:00:00+00:00 [queued]>
+[2023-10-01T17:59:24.235+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T17:59:24.267+0000] {taskinstance.py:1327} INFO - Executing <Task(WebToGCSHKOperator): download_to_gcs> on 2019-07-02 06:00:00+00:00
+[2023-10-01T17:59:24.275+0000] {standard_task_runner.py:57} INFO - Started process 2715 to run task
+[2023-10-01T17:59:24.279+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'download_to_gcs', 'scheduled__2019-07-02T06:00:00+00:00', '--job-id', '611', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmpynahgheb']
+[2023-10-01T17:59:24.282+0000] {standard_task_runner.py:85} INFO - Job 611: Subtask download_to_gcs
+[2023-10-01T17:59:24.345+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-07-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T17:59:24.548+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='download_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2019-07-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-07-02T06:00:00+00:00'
+[2023-10-01T17:59:24.550+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T17:59:24.550+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T17:59:24.551+0000] {Web_To_GCS_Hook.py:67} INFO - Execute downloading of file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-07.csv.gz to gs://practice18//green_tripdata_2019-07.csv.gz
+[2023-10-01T17:59:47.728+0000] {Web_To_GCS_Hook.py:79} INFO - File written to temporary directory: /tmp/tmp6hqpw3tf/green_tripdata_2019-07.csv.gz
+[2023-10-01T17:59:49.511+0000] {warnings.py:110} WARNING - /opt/***/plugins/web/operators/Web_To_GCS_Hook.py:58: DtypeWarning: Columns (3) have mixed types.Specify dtype option on import or set low_memory=False.
+  self._copy_file_object(gcs_hook)
+
+[2023-10-01T17:59:49.896+0000] {logging_mixin.py:150} INFO -    VendorID lpep_pickup_datetime  ... trip_type congestion_surcharge
+0       2.0  2019-07-01 00:00:48  ...       1.0                  0.0
+1       2.0  2019-07-01 00:23:36  ...       1.0                  0.0
+2       2.0  2019-07-01 00:09:48  ...       1.0                  0.0
+3       2.0  2019-07-01 00:09:07  ...       1.0                  0.0
+4       2.0  2019-07-01 00:50:45  ...       1.0                  0.0
+
+[5 rows x 20 columns]
+[2023-10-01T17:59:54.558+0000] {Web_To_GCS_Hook.py:90} INFO - Parquet: green_tripdata_2019-07.csv
+[2023-10-01T18:01:41.415+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 461, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/local/lib/python3.7/http/client.py", line 1373, in getresponse
+    response.begin()
+  File "/usr/local/lib/python3.7/http/client.py", line 319, in begin
+    version, status, reason = self._read_status()
+  File "/usr/local/lib/python3.7/http/client.py", line 280, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/local/lib/python3.7/socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/local/lib/python3.7/ssl.py", line 1071, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/local/lib/python3.7/ssl.py", line 929, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 497, in send
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 468, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 358, in _raise_timeout
+    self, url, "Read timed out. (read timeout=%s)" % timeout_value
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='storage.googleapis.com', port=443): Read timed out. (read timeout=60)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 58, in execute
+    self._copy_file_object(gcs_hook)
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 99, in _copy_file_object
+    gzip=False,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 533, in upload
+    partial(blob.upload_from_filename, filename=filename, content_type=mime_type, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 490, in _call_with_retry
+    f()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2697, in upload_from_filename
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2553, in upload_from_file
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2384, in _do_upload
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2215, in _do_resumable_upload
+    response = upload.transmit_next_chunk(transport, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/upload.py", line 516, in transmit_next_chunk
+    retriable_request, self._get_status_code, self._retry_strategy
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/_request_helpers.py", line 178, in wait_and_retry
+    raise error
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/_request_helpers.py", line 155, in wait_and_retry
+    response = func()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/upload.py", line 508, in retriable_request
+    method, url, data=payload, headers=headers, timeout=timeout
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/transport/requests.py", line 555, in request
+    **kwargs
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 532, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='storage.googleapis.com', port=443): Read timed out. (read timeout=60)
+[2023-10-01T18:01:41.781+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=download_to_gcs, execution_date=20190702T060000, start_date=20231001T175924, end_date=20231001T180141
+[2023-10-01T18:01:41.811+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 611 for task download_to_gcs (HTTPSConnectionPool(host='storage.googleapis.com', port=443): Read timed out. (read timeout=60); 2715)
+[2023-10-01T18:01:41.855+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-10-01T18:01:41.892+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

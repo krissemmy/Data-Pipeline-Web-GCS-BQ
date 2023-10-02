@@ -1,0 +1,70 @@
+[2023-10-01T16:45:00.537+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-01-02T06:00:00+00:00 [up_for_retry]>
+[2023-10-01T16:45:02.263+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-01-02T06:00:00+00:00 [up_for_retry]>
+[2023-10-01T16:45:02.263+0000] {taskinstance.py:1308} INFO - Starting attempt 2 of 3
+[2023-10-01T16:45:02.707+0000] {taskinstance.py:1327} INFO - Executing <Task(WebToGCSHKOperator): download_to_gcs> on 2019-01-02 06:00:00+00:00
+[2023-10-01T16:45:02.716+0000] {standard_task_runner.py:57} INFO - Started process 1513 to run task
+[2023-10-01T16:45:02.721+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'download_to_gcs', 'scheduled__2019-01-02T06:00:00+00:00', '--job-id', '576', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmpcss5jzpt']
+[2023-10-01T16:45:02.725+0000] {standard_task_runner.py:85} INFO - Job 576: Subtask download_to_gcs
+[2023-10-01T16:45:03.155+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-01-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T16:45:04.299+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='download_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2019-01-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-01-02T06:00:00+00:00'
+[2023-10-01T16:45:04.300+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T16:45:04.300+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T16:45:04.301+0000] {Web_To_GCS_Hook.py:67} INFO - Execute downloading of file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-01.csv.gz to gs://practice18//green_tripdata_2019-01.csv.gz
+[2023-10-01T16:45:06.083+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 175, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.7/socket.py", line 752, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 403, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 1053, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 187, in _new_conn
+    self, "Failed to establish a new connection: %s" % e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7fef8554db10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 497, in send
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-01.csv.gz (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fef8554db10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 58, in execute
+    self._copy_file_object(gcs_hook)
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 75, in _copy_file_object
+    r = requests.get(request_url)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-01.csv.gz (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fef8554db10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))
+[2023-10-01T16:45:07.947+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=download_to_gcs, execution_date=20190102T060000, start_date=20231001T164502, end_date=20231001T164507
+[2023-10-01T16:45:08.057+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 576 for task download_to_gcs (HTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-01.csv.gz (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fef8554db10>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')); 1513)
+[2023-10-01T16:45:08.118+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-10-01T16:45:08.156+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

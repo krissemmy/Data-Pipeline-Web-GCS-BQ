@@ -1,0 +1,320 @@
+[2023-10-01T15:50:21.497+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T15:50:21.509+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T15:50:21.509+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T15:50:22.326+0000] {taskinstance.py:1327} INFO - Executing <Task(WebToGCSHKOperator): download_to_gcs> on 2019-02-02 06:00:00+00:00
+[2023-10-01T15:50:22.335+0000] {standard_task_runner.py:57} INFO - Started process 679 to run task
+[2023-10-01T15:50:22.339+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'download_to_gcs', 'scheduled__2019-02-02T06:00:00+00:00', '--job-id', '570', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmpa07ma_lr']
+[2023-10-01T15:50:22.342+0000] {standard_task_runner.py:85} INFO - Job 570: Subtask download_to_gcs
+[2023-10-01T15:50:23.698+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T15:50:24.806+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='download_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2019-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-02-02T06:00:00+00:00'
+[2023-10-01T15:50:24.808+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T15:50:24.809+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T15:50:24.809+0000] {Web_To_GCS_Hook.py:67} INFO - Execute downloading of file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-02.csv.gz to gs://practice18//green_tripdata_2019-02.csv.gz
+[2023-10-01T15:50:37.516+0000] {Web_To_GCS_Hook.py:79} INFO - File written to temporary directory: /tmp/tmps6mak8xz/green_tripdata_2019-02.csv.gz
+[2023-10-01T15:50:41.966+0000] {logging_mixin.py:150} INFO -    VendorID lpep_pickup_datetime  ... trip_type congestion_surcharge
+0         2  2019-02-01 00:10:19  ...         1                  0.0
+1         2  2019-02-01 00:02:16  ...         1                  0.0
+2         2  2019-02-01 00:37:19  ...         1                  0.0
+3         1  2019-02-01 00:10:10  ...         1                  0.0
+4         1  2019-02-01 00:30:19  ...         1                  0.0
+
+[5 rows x 20 columns]
+[2023-10-01T15:50:48.836+0000] {Web_To_GCS_Hook.py:90} INFO - Parquet: green_tripdata_2019-02.csv
+[2023-10-01T15:51:15.217+0000] {gcs.py:538} INFO - File /tmp/tmps6mak8xz/green_tripdata_2019-02.csv uploaded to green/green_tripdata_2019-02.csv in practice18 bucket
+[2023-10-01T15:51:15.223+0000] {Web_To_GCS_Hook.py:105} INFO - Loaded file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-02.csv.gz to gs://practice18//green/green_tripdata_2019-02.csv
+[2023-10-01T15:51:20.952+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=download_to_gcs, execution_date=20190202T060000, start_date=20231001T155021, end_date=20231001T155120
+[2023-10-01T15:51:21.977+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-10-01T15:51:22.022+0000] {taskinstance.py:2653} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-10-01T16:59:20.215+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T16:59:20.448+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T16:59:20.449+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T16:59:21.034+0000] {taskinstance.py:1327} INFO - Executing <Task(WebToGCSHKOperator): download_to_gcs> on 2019-02-02 06:00:00+00:00
+[2023-10-01T16:59:21.226+0000] {standard_task_runner.py:57} INFO - Started process 1757 to run task
+[2023-10-01T16:59:21.235+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'download_to_gcs', 'scheduled__2019-02-02T06:00:00+00:00', '--job-id', '581', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmpyoogesak']
+[2023-10-01T16:59:21.244+0000] {standard_task_runner.py:85} INFO - Job 581: Subtask download_to_gcs
+[2023-10-01T16:59:22.478+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T16:59:25.448+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='download_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2019-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-02-02T06:00:00+00:00'
+[2023-10-01T16:59:25.450+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T16:59:25.450+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T16:59:25.451+0000] {Web_To_GCS_Hook.py:67} INFO - Execute downloading of file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-02.csv.gz to gs://practice18//green_tripdata_2019-02.csv.gz
+[2023-10-01T16:59:30.889+0000] {Web_To_GCS_Hook.py:79} INFO - File written to temporary directory: /tmp/tmph73yendw/green_tripdata_2019-02.csv.gz
+[2023-10-01T17:00:03.913+0000] {logging_mixin.py:150} INFO -    VendorID lpep_pickup_datetime  ... trip_type congestion_surcharge
+0         2  2019-02-01 00:10:19  ...         1                  0.0
+1         2  2019-02-01 00:02:16  ...         1                  0.0
+2         2  2019-02-01 00:37:19  ...         1                  0.0
+3         1  2019-02-01 00:10:10  ...         1                  0.0
+4         1  2019-02-01 00:30:19  ...         1                  0.0
+
+[5 rows x 20 columns]
+[2023-10-01T17:00:11.234+0000] {Web_To_GCS_Hook.py:90} INFO - Parquet: green_tripdata_2019-02.csv
+[2023-10-01T17:01:12.722+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 415, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.7/http/client.py", line 1281, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1327, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1276, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1075, in _send_output
+    self.send(chunk)
+  File "/usr/local/lib/python3.7/http/client.py", line 997, in send
+    self.sock.sendall(data)
+  File "/usr/local/lib/python3.7/ssl.py", line 1034, in sendall
+    v = self.send(byte_view[count:])
+  File "/usr/local/lib/python3.7/ssl.py", line 1003, in send
+    return self._sslobj.write(data)
+socket.timeout: The write operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 497, in send
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 415, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.7/http/client.py", line 1281, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1327, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1276, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1075, in _send_output
+    self.send(chunk)
+  File "/usr/local/lib/python3.7/http/client.py", line 997, in send
+    self.sock.sendall(data)
+  File "/usr/local/lib/python3.7/ssl.py", line 1034, in sendall
+    v = self.send(byte_view[count:])
+  File "/usr/local/lib/python3.7/ssl.py", line 1003, in send
+    return self._sslobj.write(data)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout('The write operation timed out'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 58, in execute
+    self._copy_file_object(gcs_hook)
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 99, in _copy_file_object
+    gzip=False,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 533, in upload
+    partial(blob.upload_from_filename, filename=filename, content_type=mime_type, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 490, in _call_with_retry
+    f()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2697, in upload_from_filename
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2553, in upload_from_file
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2384, in _do_upload
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2215, in _do_resumable_upload
+    response = upload.transmit_next_chunk(transport, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/upload.py", line 516, in transmit_next_chunk
+    retriable_request, self._get_status_code, self._retry_strategy
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/_request_helpers.py", line 178, in wait_and_retry
+    raise error
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/_request_helpers.py", line 155, in wait_and_retry
+    response = func()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/upload.py", line 508, in retriable_request
+    method, url, data=payload, headers=headers, timeout=timeout
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/transport/requests.py", line 555, in request
+    **kwargs
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout('The write operation timed out'))
+[2023-10-01T17:01:14.282+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=download_to_gcs, execution_date=20190202T060000, start_date=20231001T165920, end_date=20231001T170114
+[2023-10-01T17:01:14.391+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 581 for task download_to_gcs (('Connection aborted.', timeout('The write operation timed out')); 1757)
+[2023-10-01T17:01:14.455+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-10-01T17:01:14.502+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-10-01T17:30:43.659+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T17:30:44.105+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T17:30:44.105+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T17:30:44.830+0000] {taskinstance.py:1327} INFO - Executing <Task(WebToGCSHKOperator): download_to_gcs> on 2019-02-02 06:00:00+00:00
+[2023-10-01T17:30:44.839+0000] {standard_task_runner.py:57} INFO - Started process 2292 to run task
+[2023-10-01T17:30:44.843+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'download_to_gcs', 'scheduled__2019-02-02T06:00:00+00:00', '--job-id', '601', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmp4tc05bgb']
+[2023-10-01T17:30:44.846+0000] {standard_task_runner.py:85} INFO - Job 601: Subtask download_to_gcs
+[2023-10-01T17:30:47.048+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T17:30:50.109+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='download_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2019-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-02-02T06:00:00+00:00'
+[2023-10-01T17:30:50.111+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T17:30:50.112+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T17:30:50.112+0000] {Web_To_GCS_Hook.py:67} INFO - Execute downloading of file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-02.csv.gz to gs://practice18//green_tripdata_2019-02.csv.gz
+[2023-10-01T17:31:00.615+0000] {Web_To_GCS_Hook.py:79} INFO - File written to temporary directory: /tmp/tmpdlju4k9c/green_tripdata_2019-02.csv.gz
+[2023-10-01T17:31:06.912+0000] {logging_mixin.py:150} INFO -    VendorID lpep_pickup_datetime  ... trip_type congestion_surcharge
+0         2  2019-02-01 00:10:19  ...         1                  0.0
+1         2  2019-02-01 00:02:16  ...         1                  0.0
+2         2  2019-02-01 00:37:19  ...         1                  0.0
+3         1  2019-02-01 00:10:10  ...         1                  0.0
+4         1  2019-02-01 00:30:19  ...         1                  0.0
+
+[5 rows x 20 columns]
+[2023-10-01T17:31:13.130+0000] {Web_To_GCS_Hook.py:90} INFO - Parquet: green_tripdata_2019-02.csv
+[2023-10-01T17:31:45.220+0000] {gcs.py:538} INFO - File /tmp/tmpdlju4k9c/green_tripdata_2019-02.csv uploaded to green/green_tripdata_2019-02.csv in practice18 bucket
+[2023-10-01T17:31:45.221+0000] {Web_To_GCS_Hook.py:105} INFO - Loaded file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-02.csv.gz to gs://practice18//green/green_tripdata_2019-02.csv
+[2023-10-01T17:31:45.306+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=download_to_gcs, execution_date=20190202T060000, start_date=20231001T173044, end_date=20231001T173145
+[2023-10-01T17:31:49.363+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-10-01T17:31:49.411+0000] {taskinstance.py:2653} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-10-01T18:43:04.649+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T18:43:04.684+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T18:43:04.684+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T18:43:04.712+0000] {taskinstance.py:1327} INFO - Executing <Task(WebToGCSHKOperator): download_to_gcs> on 2019-02-02 06:00:00+00:00
+[2023-10-01T18:43:04.722+0000] {standard_task_runner.py:57} INFO - Started process 3453 to run task
+[2023-10-01T18:43:04.726+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'download_to_gcs', 'scheduled__2019-02-02T06:00:00+00:00', '--job-id', '624', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmpwtzuv1rs']
+[2023-10-01T18:43:04.728+0000] {standard_task_runner.py:85} INFO - Job 624: Subtask download_to_gcs
+[2023-10-01T18:43:04.828+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T18:43:05.092+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='download_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2019-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-02-02T06:00:00+00:00'
+[2023-10-01T18:43:05.094+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T18:43:05.095+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T18:43:05.095+0000] {Web_To_GCS_Hook.py:67} INFO - Execute downloading of file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-02.csv.gz to gs://practice18//green_tripdata_2019-02.csv.gz
+[2023-10-01T18:44:10.976+0000] {Web_To_GCS_Hook.py:79} INFO - File written to temporary directory: /tmp/tmpqturxgxw/green_tripdata_2019-02.csv.gz
+[2023-10-01T18:44:13.305+0000] {logging_mixin.py:150} INFO -    VendorID lpep_pickup_datetime  ... trip_type congestion_surcharge
+0         2  2019-02-01 00:10:19  ...         1                  0.0
+1         2  2019-02-01 00:02:16  ...         1                  0.0
+2         2  2019-02-01 00:37:19  ...         1                  0.0
+3         1  2019-02-01 00:10:10  ...         1                  0.0
+4         1  2019-02-01 00:30:19  ...         1                  0.0
+
+[5 rows x 20 columns]
+[2023-10-01T18:44:17.639+0000] {Web_To_GCS_Hook.py:90} INFO - Parquet: green_tripdata_2019-02.csv
+[2023-10-01T18:45:13.626+0000] {gcs.py:538} INFO - File /tmp/tmpqturxgxw/green_tripdata_2019-02.csv uploaded to green/green_tripdata_2019-02.csv in practice18 bucket
+[2023-10-01T18:45:13.710+0000] {Web_To_GCS_Hook.py:105} INFO - Loaded file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-02.csv.gz to gs://practice18//green/green_tripdata_2019-02.csv
+[2023-10-01T18:45:13.780+0000] {taskinstance.py:1350} INFO - Marking task as SUCCESS. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=download_to_gcs, execution_date=20190202T060000, start_date=20231001T184304, end_date=20231001T184513
+[2023-10-01T18:45:13.837+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 0
+[2023-10-01T18:45:13.868+0000] {taskinstance.py:2653} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2023-10-01T19:17:51.707+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T19:17:51.747+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [queued]>
+[2023-10-01T19:17:51.747+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 3
+[2023-10-01T19:17:51.785+0000] {taskinstance.py:1327} INFO - Executing <Task(WebToGCSHKOperator): download_to_gcs> on 2019-02-02 06:00:00+00:00
+[2023-10-01T19:17:51.795+0000] {standard_task_runner.py:57} INFO - Started process 4042 to run task
+[2023-10-01T19:17:51.799+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Load-Green-Taxi-Data-Web-To-GCS-To-BQ', 'download_to_gcs', 'scheduled__2019-02-02T06:00:00+00:00', '--job-id', '628', '--raw', '--subdir', 'DAGS_FOLDER/web_gcs_bq.py', '--cfg-path', '/tmp/tmp8j1__jw_']
+[2023-10-01T19:17:51.805+0000] {standard_task_runner.py:85} INFO - Job 628: Subtask download_to_gcs
+[2023-10-01T19:17:51.866+0000] {task_command.py:410} INFO - Running <TaskInstance: Load-Green-Taxi-Data-Web-To-GCS-To-BQ.download_to_gcs scheduled__2019-02-02T06:00:00+00:00 [running]> on host 772c7a5949f4
+[2023-10-01T19:17:51.997+0000] {taskinstance.py:1547} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='' AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Load-Green-Taxi-Data-Web-To-GCS-To-BQ' AIRFLOW_CTX_TASK_ID='download_to_gcs' AIRFLOW_CTX_EXECUTION_DATE='2019-02-02T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2019-02-02T06:00:00+00:00'
+[2023-10-01T19:17:51.998+0000] {crypto.py:83} WARNING - empty cryptography key - values will not be stored encrypted.
+[2023-10-01T19:17:51.998+0000] {base.py:73} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2023-10-01T19:17:51.998+0000] {Web_To_GCS_Hook.py:67} INFO - Execute downloading of file from https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-02.csv.gz to gs://practice18//green_tripdata_2019-02.csv.gz
+[2023-10-01T19:18:02.096+0000] {Web_To_GCS_Hook.py:79} INFO - File written to temporary directory: /tmp/tmp5lewkyvb/green_tripdata_2019-02.csv.gz
+[2023-10-01T19:18:04.465+0000] {logging_mixin.py:150} INFO -    VendorID lpep_pickup_datetime  ... trip_type congestion_surcharge
+0         2  2019-02-01 00:10:19  ...         1                  0.0
+1         2  2019-02-01 00:02:16  ...         1                  0.0
+2         2  2019-02-01 00:37:19  ...         1                  0.0
+3         1  2019-02-01 00:10:10  ...         1                  0.0
+4         1  2019-02-01 00:30:19  ...         1                  0.0
+
+[5 rows x 20 columns]
+[2023-10-01T19:18:04.466+0000] {logging_mixin.py:150} INFO - (575685, 20)
+[2023-10-01T19:18:09.173+0000] {Web_To_GCS_Hook.py:90} INFO - Parquet: green_tripdata_2019-02.csv
+[2023-10-01T19:19:10.806+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 415, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.7/http/client.py", line 1281, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1327, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1276, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1075, in _send_output
+    self.send(chunk)
+  File "/usr/local/lib/python3.7/http/client.py", line 997, in send
+    self.sock.sendall(data)
+  File "/usr/local/lib/python3.7/ssl.py", line 1034, in sendall
+    v = self.send(byte_view[count:])
+  File "/usr/local/lib/python3.7/ssl.py", line 1003, in send
+    return self._sslobj.write(data)
+socket.timeout: The write operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 497, in send
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 721, in urlopen
+    chunked=chunked,
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connectionpool.py", line 415, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/home/airflow/.local/lib/python3.7/site-packages/urllib3/connection.py", line 244, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.7/http/client.py", line 1281, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1327, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1276, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.7/http/client.py", line 1075, in _send_output
+    self.send(chunk)
+  File "/usr/local/lib/python3.7/http/client.py", line 997, in send
+    self.sock.sendall(data)
+  File "/usr/local/lib/python3.7/ssl.py", line 1034, in sendall
+    v = self.send(byte_view[count:])
+  File "/usr/local/lib/python3.7/ssl.py", line 1003, in send
+    return self._sslobj.write(data)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', timeout('The write operation timed out'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 58, in execute
+    self._copy_file_object(gcs_hook)
+  File "/opt/airflow/plugins/web/operators/Web_To_GCS_Hook.py", line 99, in _copy_file_object
+    gzip=False,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 533, in upload
+    partial(blob.upload_from_filename, filename=filename, content_type=mime_type, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/providers/google/cloud/hooks/gcs.py", line 490, in _call_with_retry
+    f()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2697, in upload_from_filename
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2553, in upload_from_file
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2384, in _do_upload
+    retry=retry,
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/cloud/storage/blob.py", line 2215, in _do_resumable_upload
+    response = upload.transmit_next_chunk(transport, timeout=timeout)
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/upload.py", line 516, in transmit_next_chunk
+    retriable_request, self._get_status_code, self._retry_strategy
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/_request_helpers.py", line 178, in wait_and_retry
+    raise error
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/_request_helpers.py", line 155, in wait_and_retry
+    response = func()
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/resumable_media/requests/upload.py", line 508, in retriable_request
+    method, url, data=payload, headers=headers, timeout=timeout
+  File "/home/airflow/.local/lib/python3.7/site-packages/google/auth/transport/requests.py", line 555, in request
+    **kwargs
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', timeout('The write operation timed out'))
+[2023-10-01T19:19:11.651+0000] {taskinstance.py:1350} INFO - Marking task as UP_FOR_RETRY. dag_id=Load-Green-Taxi-Data-Web-To-GCS-To-BQ, task_id=download_to_gcs, execution_date=20190202T060000, start_date=20231001T191751, end_date=20231001T191911
+[2023-10-01T19:19:11.689+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 628 for task download_to_gcs (('Connection aborted.', timeout('The write operation timed out')); 4042)
+[2023-10-01T19:19:11.741+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-10-01T19:19:11.767+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check
